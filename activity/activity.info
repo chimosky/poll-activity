@@ -10,4 +10,4 @@ repository = https://github.com/godiard/poll-activity.git
 max_participants = 10
 summary = Make a poll.
 url = https://help.sugarlabs.org/en/poll.html
-tags = Teacher;Documents 
+tags = Language;Maths;Media
