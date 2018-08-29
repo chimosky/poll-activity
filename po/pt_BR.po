@@ -35,15 +35,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-09-04 00:33-0400\n"
-"PO-Revision-Date: 2010-02-12 05:17+0200\n"
-"Last-Translator: Chris <cjl@laptop.org>\n"
+"PO-Revision-Date: 2018-08-20 20:42+0000\n"
+"Last-Translator: Paulo Francisco <slomp@ufrgs.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Pootle 2.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.1.1\n"
+"X-POOTLE-MTIME: 1534797743.000000\n"
 
 #. TRANS: "name" option from activity.info file
 #. TRANS: "summary" option from activity.info file
@@ -58,7 +59,7 @@ msgstr "%(author)s compartilhou uma enquete '%(title)s' com você."
 
 #: PollSession.py:585
 msgid "New Poll"
-msgstr "Nova enquente"
+msgstr "Nova enquete"
 
 #: Widgets.py:59 Widgets.py:497
 msgid "Choose a Poll"
@@ -70,14 +71,13 @@ msgstr "Construir uma enquete"
 
 #: Widgets.py:67 Widgets.py:388
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 #: Widgets.py:71 Widgets.py:570
 msgid "Lesson Plans"
 msgstr "Planos de aula"
 
 #: Widgets.py:106
-#, fuzzy
 msgid "Build a poll"
 msgstr "Construir uma enquete"
 
@@ -96,15 +96,15 @@ msgstr "Número de votos a coletar:"
 #: Widgets.py:126
 #, python-format
 msgid "Answer %s:"
-msgstr ""
+msgstr "Resposta %s:"
 
 #: Widgets.py:134 Widgets.py:205
 msgid "Change Image"
-msgstr ""
+msgstr "Mudar imagem"
 
 #: Widgets.py:139
 msgid "Add Image"
-msgstr ""
+msgstr "Adicionar imagem"
 
 #: Widgets.py:150
 msgid "Step 1: Preview"
@@ -116,39 +116,39 @@ msgstr "Passo 2: Salvar"
 
 #: Widgets.py:209 Widgets.py:484 poll.py:380
 msgid "Poll Activity"
-msgstr ""
+msgstr "Atividade de enquete"
 
 #: Widgets.py:210
 msgid "Your selection is not an image"
-msgstr ""
+msgstr "O que você selecionou não é uma imagem"
 
 #: Widgets.py:394
 msgid "Show answers while voting"
-msgstr ""
+msgstr "Mostrar respostas enquanto vota"
 
 #: Widgets.py:399
 msgid "Remember last vote"
-msgstr ""
+msgstr "Lembrar último voto"
 
 #: Widgets.py:406
 msgid "Play a sound when make a vote"
-msgstr ""
+msgstr "Emitir um som ao votar"
 
 #: Widgets.py:412
 msgid "Use image in answer"
-msgstr ""
+msgstr "Usar imagem na resposta"
 
 #: Widgets.py:417
 msgid "Image Size: "
-msgstr ""
+msgstr "Tamanho da imagem: "
 
 #: Widgets.py:445
 msgid "Save"
-msgstr ""
+msgstr "Salvar"
 
 #: Widgets.py:485
 msgid "The settings have been saved"
-msgstr ""
+msgstr "As configurações foram salvas"
 
 #: Widgets.py:536
 msgid "VOTE"
@@ -188,11 +188,11 @@ msgstr "votos"
 
 #: Widgets.py:725
 msgid "(votes left to collect)"
-msgstr ""
+msgstr "(votos restantes para coletar)"
 
 #: Widgets.py:733 poll.py:476
 msgid "Vote"
-msgstr "Voto"
+msgstr "Votar"
 
 #: Widgets.py:739
 msgid "Edit Poll"
@@ -212,7 +212,7 @@ msgstr "Visualizar Enquete"
 
 #: poll.py:381
 msgid "To vote you have to select first one option"
-msgstr ""
+msgstr "Para votar é necessário escolher uma opção primeiro"
 
 #: poll.py:477
 #, python-format
@@ -225,7 +225,7 @@ msgstr "Juntou-se"
 
 #: poll.py:604
 msgid "Left"
-msgstr "Deixou"
+msgstr "Saiu"
 
 #~ msgid "Favorite Color"
 #~ msgstr "Cor favorita"
