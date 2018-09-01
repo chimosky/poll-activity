@@ -26,8 +26,10 @@
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('GdkPixbuf', '2.0')
+gi.require_version('TelepathyGLib', '0.12')
 from gi.repository import Gtk
 from gi.repository import GdkPixbuf
+from gi.repository import TelepathyGLib
 
 import subprocess
 import cPickle
@@ -39,9 +41,6 @@ import dbus
 from hashlib import sha1
 from datetime import date
 from gettext import gettext as _
-
-import telepathy
-import telepathy.client
 
 from sugar3.presence.tubeconn import TubeConnection
 
@@ -666,7 +665,7 @@ class PollBuilder(activity.Activity):
 
         self._logger.debug('This is my activity: making a tube...')
 
-        self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].OfferDBusTube(
+        self.tubes_chan[TelepathyGLib.IFACE_CHANNEL_TYPE_TUBES].OfferDBusTube(
             SERVICE, {})
 
     def __sharing_setup(self):
@@ -684,7 +683,7 @@ class PollBuilder(activity.Activity):
         self.tubes_chan = self.shared_activity.telepathy_tubes_chan
         self.text_chan = self.shared_activity.telepathy_text_chan
 
-        self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].connect_to_signal(
+        self.tubes_chan[TelepathyGLib.IFACE_CHANNEL_TYPE_TUBES].connect_to_signal(
             'NewTube', self.__new_tube_cb)
 
         self.shared_activity.connect('buddy-joined', self.__buddy_joined_cb)
@@ -713,7 +712,7 @@ class PollBuilder(activity.Activity):
         self.__sharing_setup()
 
         self._logger.debug('This is not my activity: waiting for a tube...')
-        self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].ListTubes(
+        self.tubes_chan[TelepathyGLib.IFACE_CHANNEL_TYPE_TUBES].ListTubes(
             reply_handler=self.__list_tubes_reply_cb,
             error_handler=self.__list_tubes_error_cb)
 
@@ -726,16 +725,16 @@ class PollBuilder(activity.Activity):
             'New tube: ID=%d initator=%d type=%d srv=%s params=%r state=%d',
             id, initiator, type, service, params, state)
 
-        if (type == telepathy.TUBE_TYPE_DBUS and service == SERVICE):
-            if state == telepathy.TUBE_STATE_LOCAL_PENDING:
-                self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES].AcceptDBusTube(
+        if (type == TelepathyGLib.TubeType.DBUS and service == SERVICE):
+            if state == TelepathyGLib.TubeState.LOCAL_PENDING:
+                self.tubes_chan[TelepathyGLib.IFACE_CHANNEL_TYPE_TUBES].AcceptDBusTube(
                     id)
 
             tube_conn = TubeConnection(
                 self.conn,
-                self.tubes_chan[telepathy.CHANNEL_TYPE_TUBES],
+                self.tubes_chan[TelepathyGLib.IFACE_CHANNEL_TYPE_TUBES],
                 id,
-                group_iface=self.text_chan[telepathy.CHANNEL_INTERFACE_GROUP])
+                group_iface=self.text_chan[TelepathyGLib.IFACE_CHANNEL_INTERFACE_GROUP])
 
             self.poll_session = PollSession(tube_conn, self.initiating,
                                             self.__get_buddy, self)
@@ -756,11 +755,11 @@ class PollBuilder(activity.Activity):
         """
 
         self._logger.debug('Trying to find owner of handle %u...', cs_handle)
-        group = self.text_chan[telepathy.CHANNEL_INTERFACE_GROUP]
+        group = self.text_chan[TelepathyGLib.IFACE_CHANNEL_INTERFACE_GROUP]
         my_csh = group.GetSelfHandle()
 
         SIGNAL_TELEPATHY = \
-            telepathy.CHANNEL_GROUP_FLAG_CHANNEL_SPECIFIC_HANDLES
+            TelepathyGLib.ChannelGroupFlags.CHANNEL_SPECIFIC_HANDLES
         self._logger.debug('My handle in that group is %u', my_csh)
 
         if my_csh == cs_handle:
